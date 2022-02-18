@@ -2,28 +2,28 @@
 
 Code repository for paper: 
 
-JD at SemEval2022 Task 4: RoBERTa vs Traditional Ensemble Models for Patronizing and Condescending Language Detection.
+__JD at SemEval2022 Task 4: RoBERTa vs Traditional Ensemble Models for Patronizing and Condescending Language Detection.__
 
 Authors: [Jinghua Xu](https://jinhxu.github.io/), [Diana Constantina Höfels]()
 
-## shared-task
+### shared-task
 
 * [task website](https://sites.google.com/view/pcl-detection-semeval2022/)
 
-## abstract
+### abstract
 
 > tba
 
-## code
+### code
 
 * run `export PYTHONPATH="${PYTHONPATH}:path_to_wd/"` in terminal before running each script
 
-## data
+### data
 
 * upon request, [info](https://github.com/Perez-AlmendrosC/dontpatronizeme).
 
-## results overview
+### results overview
 
-### subtask 1
+#### subtask 1
 
-### subtask 2
+#### subtask 2
