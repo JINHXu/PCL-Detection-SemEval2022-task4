@@ -1,4 +1,4 @@
-## JD at SemEval2022-task4: PCL detection
+# JD at SemEval2022-task4: PCL detection
 
 Code repository for our paper: 
 
