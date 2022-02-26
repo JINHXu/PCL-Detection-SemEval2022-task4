@@ -1,22 +1,22 @@
-# simple ANN for binary text classification
+# Glove + LSTM
 # Jinghua Xu
 
-from resources.dont_patronize_me import DontPatronizeMe
+import os
+
 import numpy as np
 import pandas as pd
-from numpy import array
-from numpy import asarray
-from numpy import zeros
-from keras.preprocessing.text import Tokenizer
-from keras.preprocessing.sequence import pad_sequences
-from keras.models import Sequential
-from keras.layers import *
-from sklearn.metrics import f1_score, precision_score, recall_score
-from keras import backend as K
-from sklearn.utils import class_weight
-from sklearn.model_selection import train_test_split
 import tensorflow as tf
-import os
+from keras import backend as K
+from keras.layers import *
+from keras.models import Sequential
+from keras.preprocessing.sequence import pad_sequences
+from keras.preprocessing.text import Tokenizer
+from numpy import array, asarray, zeros
+from sklearn.metrics import f1_score, precision_score, recall_score
+from sklearn.model_selection import train_test_split
+from sklearn.utils import class_weight
+
+from resources.dont_patronize_me import DontPatronizeMe
 
 
 def get_f1(y_true, y_pred):  # taken from old keras source code
@@ -38,7 +38,7 @@ def labels2file(p, outf_path):
 test_data_path = "./data/task4_test.tsv"
 data_path = './data'
 glove_path = './resources/glove.6B.100d.txt'
-graph_path = './neural_net_graphs/ANN.png'
+graph_path = './neural_net_graphs/GloVe_LSTM.png'
 
 # load test data
 tedf = pd.read_csv(test_data_path, sep='\t', header=None)
@@ -64,7 +64,6 @@ vocab_size = len(t.word_index) + 1
 # integer encode the documents
 encoded_docs = t.texts_to_sequences(train_text)
 encoded_test = t.texts_to_sequences(text_test)
-
 maxi = 0
 for doc in encoded_docs:
     # print(doc)
@@ -105,11 +104,13 @@ for word, i in t.word_index.items():
 model = Sequential()
 model.add(Input(shape=(max_length,), dtype='int32'))
 e = Embedding(vocab_size, 100, weights=[
-              embedding_matrix], input_length=max_length, trainable=False)
+    embedding_matrix], input_length=max_length, trainable=False)
 model.add(e)
-model.add(Dropout(0.2))
-model.add(GlobalAveragePooling1D())
-model.add(Dropout(0.2))
+model.add(LSTM(60, return_sequences=True, name='lstm_layer'))
+model.add(GlobalMaxPool1D())
+model.add(Dropout(0.1))
+model.add(Dense(50, activation="relu"))
+model.add(Dropout(0.1))
 model.add(Dense(1, activation='sigmoid'))
 # compile the model
 model.compile(optimizer='adam', loss='binary_crossentropy',
@@ -126,12 +127,14 @@ X_train, X_val, y_train, y_val = train_test_split(
 
 # fit the model
 model.fit(X_train, y_train, validation_data=(X_val, y_val),
-          class_weight=class_weights, epochs=50, verbose=1, batch_size=32, shuffle=True)
+          class_weight=class_weights, epochs=50, verbose=1, batch_size=128, shuffle=True)
 
-preds = model.predict(padded_test, batch_size=32, verbose=1)
-preds[preds <= 0.5] = 0
-preds[preds > 0.5] = 1
+lstm_preds = model.predict(padded_test, batch_size=128, verbose=1)
 
-preds_path = './predictions/ANN/task1.txt'
+lstm_preds[lstm_preds <= 0.5] = 0
+lstm_preds[lstm_preds > 0.5] = 1
 
-labels2file(preds, preds_path)
+# preds_txt = './predictions/LSTM1/task1.txt'
+preds_txt = './predictions/LSTM2/task1.txt'
+
+labels2file(lstm_preds, preds_txt)

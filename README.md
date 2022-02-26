@@ -1,11 +1,11 @@
-# JD at SemEval2022-task4: PCL detection
+# SemEval2022-task4: PCL detection
 
 Code repository for our [paper](): 
 
-__JD at SemEval2022 Task 4: RoBERTa vs Traditional Ensemble Models for Patronizing and Condescending Language Detection__
+__ __
 
 
-Authors: [Jinghua Xu](https://jinhxu.github.io/), [Diana Constantina Höfels]()
+Authors: [Jinghua Xu](https://jinhxu.github.io/)
 
 ### shared-task
 
@@ -13,7 +13,7 @@ Authors: [Jinghua Xu](https://jinhxu.github.io/), [Diana Constantina Höfels]()
 
 ### abstract
 
-> This paper describes our participation in SemEval-2022, Task 4: Patronizing and Condescending Language Detection. We participate in both subtasks: Patronizing and Condescending Language (PCL) Identification and Patronizing and Condescending Language (PCL) Categorization, with our main focus put on subtask 1 (PCL Identification). Our experiments compare traditional ensemble models against pretrained language model RoBERTa. Our top-performing system is ranked 27 out of 80 teams (F1-score: 0.5464) in subtask 1, and 23 out of 50 teams (F1-score: 0.3003) in subtask 2.
+> 
 
 ### code
 
