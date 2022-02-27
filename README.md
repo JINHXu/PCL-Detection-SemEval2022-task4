@@ -2,7 +2,7 @@
 
 Code repository for the [paper](): 
 
-__Diana-Jinghua-Mourhaf at SemEval2022 Task 4: pre-BERT Neural Network Methods vs post-BERT RoBERTa Model for Patronizing and Condescending Language Detection__
+__Diana-Jinghua-Mourhaf at SemEval2022 Task 4: pre-BERT Neural Network Methods vs post-BERT RoBERTa Approach for Patronizing and Condescending Language Detection__
 
 
 Authors: [Jinghua Xu](https://jinhxu.github.io/)
