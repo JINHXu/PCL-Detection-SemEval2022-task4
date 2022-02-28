@@ -5,7 +5,7 @@ Code repository for the [paper]():
 __Xu at SemEval2022 Task 4: pre-BERT Neural Network Methods vs post-BERT RoBERTa Approach for Patronizing and Condescending Language Detection__
 
 
-Authors: [Jinghua Xu](https://jinhxu.github.io/)
+Author: [Jinghua Xu](https://jinhxu.github.io/)
 
 ### shared-task
 
