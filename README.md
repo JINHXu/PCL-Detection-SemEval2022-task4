@@ -1,6 +1,6 @@
 # SemEval2022-task4: PCL detection
 
-Code repository for the [paper](https://openreview.net/forum?id=BFZgrl9eFe9): 
+Code repository for the [paper](https://aclanthology.org/2022.semeval-1.65/): 
 
 __Xu at SemEval2022 Task 4: pre-BERT Neural Network Methods vs post-BERT RoBERTa Approach for Patronizing and Condescending Language Detection__
 
